@@ -1,25 +1,25 @@
 import React from 'react';
 import styled from 'styled-components';
+import logo from '../assets/pokeapi.png';
 
 const Header = () => {
-    const Header = styled.header`
-        background: #ef5350;
-        height: 6vh;
-        display: flex;
-        align-items: center;
-        padding: 5px;
-    `
+  const Header = styled.header`
+    background: #ef5350;
+    height: 12vh;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+  `;
 
-    const Span = styled.span`
-        font-size: 18px;
-        color: #FFF;        
-    `
+  const Img = styled.img`
+    height: 64px;
+  `;
 
-    return (
-        <Header>
-            <Span>PokeApi</Span>
-        </Header>
-    )
-}
+  return (
+    <Header>
+      <Img src={logo} alt="logo" />
+    </Header>
+  );
+};
 
 export default Header;
