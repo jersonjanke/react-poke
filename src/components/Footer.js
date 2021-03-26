@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import logo from '../assets/pokeapi.png';
 
 const Footer = () => {
     const Footer = styled.footer`
@@ -7,8 +8,14 @@ const Footer = () => {
         padding: 2em;
         flex-shrink: 0;
     `
+    const Img = styled.img`
+        height: 48px;
+    `
+
     return (
-        <Footer>Footer</Footer>
+        <Footer>
+            <Img src={logo} alt="logo" />
+        </Footer>
     )
 }
 
