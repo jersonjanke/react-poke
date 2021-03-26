@@ -1,12 +1,16 @@
 import React from 'react';
 import Detail from './Detail';
+import styled from 'styled-components';
 
 const List = () => {
+    const Div = styled.div`
+        height: 100%;
+    `
     return (
-        <div>
+        <Div>
             <h1>List</h1>
             <Detail />
-        </div>
+        </Div>
     )
 };
 
