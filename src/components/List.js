@@ -16,7 +16,7 @@ const List = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    getPokeList(0, 10).then(({ data }) => setData(data?.results));
+    getPokeList(0, 24).then(({ data }) => setData(data?.results));
   }, []);
 
   return (
