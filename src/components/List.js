@@ -11,6 +11,8 @@ const List = () => {
     list-style-type: none;
     display: flex;
     flex-wrap: wrap;
+    width: 768px;
+    margin: 0 auto;
   `;
 
   const [data, setData] = useState([]);
