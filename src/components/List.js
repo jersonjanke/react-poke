@@ -1,43 +1,32 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
 import { getPokeList } from './../api/api';
 import Detail from './Detail';
+import { Card, Ul } from './styles'
 
 const List = () => {
-  const Div = styled.div`
-    height: 100%;
-  `;
-  const Ul = styled.ul`
-    list-style-type: none;
-    display: flex;
-    flex-wrap: wrap;
-    width: 768px;
-    margin: 0 auto;
-  `;
+    const [data, setData] = useState([]);
 
-  const [data, setData] = useState([]);
+    useEffect(() => {
+        getPokeList(0, 1).then(({ data }) => setData(data?.results));
+    }, []);
 
-  useEffect(() => {
-    getPokeList(0, 24).then(({ data }) => setData(data?.results));
-  }, []);
-
-  return (
-    <Div>
-      <Ul>
-        {data ? (
-          data.map((poke) => {
-            return (
-              <li key={poke.name}>
-                <Detail data={poke} />
-              </li>
-            );
-          })
-        ) : (
-          <li>Loading...</li>
-        )}
-      </Ul>
-    </Div>
-  );
+    return (
+        <Card>
+            <Ul>
+                {data ? (
+                    data.map((poke) => {
+                        return (
+                            <li key={poke.name}>
+                                <Detail data={poke} />
+                            </li>
+                        );
+                    })
+                ) : (
+                        <li>Loading...</li>
+                    )}
+            </Ul>
+        </Card>
+    );
 };
 
 export default List;

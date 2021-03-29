@@ -1,22 +1,14 @@
 import React from 'react';
-import styled from 'styled-components';
 import logo from '../assets/pokeapi.png';
+import { FooterComponentStyle, Logo } from './styles'
 
 const Footer = () => {
-  const Footer = styled.footer`
-    background: #333;
-    padding: 2em;
-    flex-shrink: 0;
-  `;
-  const Img = styled.img`
-    height: 48px;
-  `;
 
-  return (
-    <Footer>
-      <Img src={logo} alt="logo" />
-    </Footer>
-  );
+    return (
+        <FooterComponentStyle>
+            <Logo src={logo} alt="logo" />
+        </FooterComponentStyle>
+    );
 };
 
 export default Footer;

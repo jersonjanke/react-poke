@@ -3,13 +3,13 @@ import Footer from './components/Footer';
 import List from './components/List';
 
 function App() {
-  return (
-    <div className="content">
-      <Header />
-      <List />
-      <Footer />
-    </div>
-  );
+    return (
+        <div className="content">
+            <Header />
+            <List />
+            <Footer />
+        </div>
+    );
 }
 
 export default App;
