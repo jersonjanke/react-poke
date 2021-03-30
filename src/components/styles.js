@@ -41,5 +41,21 @@ export const Container = styled.div`
   height: 10em;
   width: 9em;
   box-shadow: 0px 0px 5px 2px #333;
-  ${(props) => getTypeBgPokemon(props.type)}
+  ${(props) => getTypeBgPokemon(props.type)};
+  color: #fdc91b;
+
+  #name {
+      font-size: 1.6em;
+      text-transform: capitalize;
+      text-shadow: 0 0 2px #3861a6, 0 0 4px #3861a6;
+  }
 `;
+
+export const DetailInfo = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+    font-size: 0.8em;
+    text-transform: capitalize;
+    text-shadow: 0 0 2px #3861a6, 0 0 4px #3861a6;
+`
