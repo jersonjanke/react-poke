@@ -1,42 +1,62 @@
-import React, { useEffect, useImperativeHandle, useState, forwardRef, useCallback } from 'react'
-import { createPortal } from 'react-dom'
-import '../index.css'
+import React, {
+  useState,
+  useEffect,
+  forwardRef,
+  useCallback,
+  useImperativeHandle,
+} from 'react';
+import { createPortal } from 'react-dom';
+import { ModalStyle } from './styles';
 
-const modalElement = document.getElementById('modal-root')
+const modalElement = document.getElementById('modal-root');
 
-export function Modal({ children, fade = false, defaultOpened = false }, ref) {
-    const [isOpen, setIsOpen] = useState(defaultOpened)
+export function Modal({ children }, ref) {
+  const [show, setShow] = useState(false);
 
-    const close = useCallback(() => setIsOpen(false), [])
+  const close = useCallback(() => setShow(false), []);
 
-    useImperativeHandle(ref, () => ({
-        open: () => setIsOpen(true),
-        close
-    }), [close])
+  useImperativeHandle(
+    ref,
+    () => ({
+      open: () => setShow(true),
+      close,
+    }),
+    [close]
+  );
 
-    const handleEscape = useCallback(event => {
-        if (event.keyCode === 27) close()
-    }, [close])
+  const handleClose = () => {
+    setShow(false);
+  };
 
-    useEffect(() => {
-        if (isOpen) document.addEventListener('keydown', handleEscape, false)
-        return () => {
-            document.removeEventListener('keydown', handleEscape, false)
-        }
-    }, [handleEscape, isOpen])
+  useEffect(() => {
+    if (show) {
+      document.addEventListener('click', handleClose, false);
+      document.addEventListener('keydown', handleClose, false);
+    }
+    return () => {
+      document.removeEventListener('click', handleClose, false);
+      document.removeEventListener('keydown', handleClose, false);
+    };
+  }, [show]);
 
-    return createPortal(
-        isOpen ? (
-            <div className={`modal ${fade ? 'modal-fade' : ''}`}>
-                <div className="modal-overlay" onClick={close} />
-                <span role="button" className="modal-close" aria-label="close" onClick={close}>
-                    x
-        </span>
-                <div className="modal-body">{children}</div>
-            </div>
-        ) : null,
-        modalElement
-    )
+  return createPortal(
+    show ? (
+      <ModalStyle>
+        <div id="modal-content">
+          <span
+            role="button"
+            id="modal-close"
+            aria-label="close"
+            onClick={() => handleClose}
+          >
+            x
+          </span>
+          {children}
+        </div>
+      </ModalStyle>
+    ) : null,
+    modalElement
+  );
 }
 
-export default forwardRef(Modal)
+export default forwardRef(Modal);

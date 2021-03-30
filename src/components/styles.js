@@ -45,17 +45,49 @@ export const Container = styled.div`
   color: #fdc91b;
 
   #name {
-      font-size: 1.6em;
-      text-transform: capitalize;
-      text-shadow: 0 0 2px #3861a6, 0 0 4px #3861a6;
+    font-size: 1.6em;
+    text-transform: capitalize;
+    text-shadow: 0 0 2px #3861a6, 0 0 4px #3861a6;
   }
 `;
 
 export const DetailInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  font-size: 0.8em;
+  text-transform: capitalize;
+  text-shadow: 0 0 2px #3861a6, 0 0 4px #3861a6;
+`;
+
+export const ModalStyle = styled.div`
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.65);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999999;
+  box-sizing: border-box;
+
+  #modal-content {
+    padding: 0.8em;
+    background: #fff;
+    height: 75vh;
+    width: 75vw;
+    border-radius: 12px;
+  }
+
+  #modal-close {
     display: flex;
     flex-direction: column;
-    margin: 5px;
-    font-size: 0.8em;
-    text-transform: capitalize;
-    text-shadow: 0 0 2px #3861a6, 0 0 4px #3861a6;
-`
+    align-items: flex-end;
+    padding: 12px;
+    cursor: pointer;
+  }
+`;
