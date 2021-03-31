@@ -1,31 +1,40 @@
 import React, { useState, useEffect } from 'react';
 import { getPokeList } from './../api/api';
-import Detail from './Detail';
-import { Card, Ul } from './styles';
+import Card from './Card';
+import { CardStyle, Ul, ContainerCenter, PrimaryButton } from './styles';
 
 const List = () => {
-  const [data, setData] = useState([]);
+  const [pokemonsData, setPokemonsData] = useState([]);
+  const [more, setMore] = useState(24);
 
   useEffect(() => {
-    getPokeList(0, 1).then(({ data }) => setData(data?.results));
-  }, []);
+    getPokeList(0, more).then(({ data }) => setPokemonsData(data));
+  }, [more]);
+
+  const getMore = async () => {
+    await setMore(more + 12);
+    getPokeList(0, more).then(({ data }) => setPokemonsData(data));
+  };
 
   return (
-    <Card>
+    <CardStyle>
       <Ul>
-        {data ? (
-          data.map((poke) => {
+        {pokemonsData.results ? (
+          pokemonsData.results.map((pokemon) => {
             return (
-              <li key={poke.name}>
-                <Detail data={poke} />
+              <li key={pokemon.name}>
+                <Card data={pokemon} />
               </li>
             );
           })
         ) : (
-          <li>Loading...</li>
+          <li>Not found any pokemon!</li>
         )}
       </Ul>
-    </Card>
+      <ContainerCenter>
+        <PrimaryButton onClick={() => getMore()}>More</PrimaryButton>
+      </ContainerCenter>
+    </CardStyle>
   );
 };
 

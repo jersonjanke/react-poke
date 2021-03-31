@@ -9,6 +9,11 @@ export const Menu = styled.header`
   padding: 5px;
 `;
 
+export const ContainerCenter = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
 export const Logo = styled.img`
   height: 48px;
 `;
@@ -19,7 +24,7 @@ export const FooterComponentStyle = styled.footer`
   flex-shrink: 0;
 `;
 
-export const Card = styled.div`
+export const CardStyle = styled.div`
   height: 100%;
 `;
 
@@ -89,5 +94,34 @@ export const ModalStyle = styled.div`
     align-items: flex-end;
     padding: 12px;
     cursor: pointer;
+  }
+`;
+
+export const PrimaryButton = styled.button`
+  padding: 0.83m;
+  margin: 5px;
+  width: 124px;
+  height: 36px;
+  background: transparent;
+  border: 2px solid #ef534f;
+  color: #ef534f;
+  box-shadow: 1px 0px 2px #333;
+  outline: none;
+
+  :hover {
+    background: #ef5350;
+    color: #fff;
+  }
+`;
+
+export const ContainerDetail = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+
+  img {
+    width: 140px;
+    height: 140px;
   }
 `;

@@ -30,7 +30,9 @@ export function Modal({ children }, ref) {
 
   useEffect(() => {
     if (show) {
-      document.addEventListener('click', handleClose, false);
+      document
+        .getElementById('modal-close')
+        .addEventListener('click', handleClose, false);
       document.addEventListener('keydown', handleClose, false);
     }
     return () => {

@@ -9,3 +9,7 @@ export const getPokeList = (offset = 0, limit = 10) => {
 export const getPokemon = (url) => {
   return axios.get(url);
 };
+
+export const getMorePokemon = (url) => {
+  return axios.get(url);
+};
