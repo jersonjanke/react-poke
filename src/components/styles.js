@@ -92,8 +92,11 @@ export const ModalStyle = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    padding: 12px;
+    padding: 0px;
     cursor: pointer;
+    position: absolute;
+    right: 14%;
+    font-size: 1.6em;
   }
 `;
 
@@ -119,9 +122,12 @@ export const ContainerDetail = styled.div`
   justify-content: center;
   flex-direction: column;
   width: 100%;
+  text-align: center;
+  text-transform: capitalize;
 
   img {
     width: 140px;
     height: 140px;
+    margin: 0 auto;
   }
 `;

@@ -5,7 +5,7 @@ const Detail = ({ data }) => {
   return (
     <ContainerDetail>
       <img src={data?.sprites?.front_default} alt={data?.name}></img>
-      <div>{data.name}</div>
+      <h2>{data.name}</h2>
     </ContainerDetail>
   );
 };
